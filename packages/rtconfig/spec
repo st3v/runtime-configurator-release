@@ -1,0 +1,8 @@
+---
+name: rtconfig
+
+dependencies:
+- rtconfig-go
+
+files:
+- github.com/st3v/rtconfig/**/*.go
