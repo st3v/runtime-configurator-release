@@ -1,0 +1,3 @@
+[submodule "src/github.com/st3v/runtime-configurator"]
+	path = src/github.com/st3v/runtime-configurator
+	url = https://github.com/st3v/runtime-configurator.git
