@@ -1,0 +1,61 @@
+---
+name: configurator
+
+templates:
+  errand_run.erb: bin/run
+  add.yml.erb: config/add.yml
+  remove.yml.erb: config/remove.yml
+  bosh_ca_cert.erb: config/bosh_ca_cert
+  uaa_ca_cert.erb: config/uaa_ca_cert
+
+packages:
+- rtconfig
+
+properties:
+  runtime_configurator.bosh.url:
+    description: BOSH director URL
+
+  runtime_configurator.bosh.user:
+    description: BOSH user
+
+  runtime_configurator.bosh.password:
+    description: BOSH password
+
+  runtime_configurator.bosh.ca_cert:
+    description: BOSH director CA cert
+
+  runtime_configurator.bosh.log_level:
+    description: Log level for BOSH interactions
+    default: info
+
+  runtime_configurator.uaa.url:
+    description: UAA URL
+
+  runtime_configurator.uaa.client.id:
+    description: UAA client ID
+
+  runtime_configurator.uaa.client.secret:
+    description: UAA client secret
+
+  runtime_configurator.uaa.ca_cert:
+    description: UAA CA cert
+
+  runtime_configurator.name:
+    description: Name of runtime-config on the director
+    default: ""
+
+  runtime_configurator.add:
+    description: runtime-config block containing releases, addons, and tags to be added to the runtime-config on the director, see https://bosh.io/docs/runtime-config.html
+    default: {}
+
+  runtime_configurator.remove:
+    description: runtime-config block containing releases, addons, and tags to be removed from the runtime-config on the director, see https://bosh.io/docs/runtime-config.html
+    default: {}
+
+  runtime_configurator.deploy:
+    description: Update all existing deployments after changing the runtime-config on the director
+    default: false
+
+  runtime_configurator.deploy_dry_run:
+    description: Dry-run updates for all existing deployments after changing the runtime-config on the director
+    default: false

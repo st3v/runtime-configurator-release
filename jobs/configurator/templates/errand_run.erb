@@ -1,0 +1,50 @@
+#!/bin/bash
+
+JOB_DIR=/var/vcap/jobs/configurator
+PKG_DIR=/var/vcap/packages/rtconfig
+CONFIG_DIR=${JOB_DIR}/config
+
+export DIRECTOR_URL=<%= p('runtime_configurator.bosh.url') %>
+
+<% if_p('runtime_configurator.bosh.user') do |user| %>
+export DIRECTOR_USER=<%= user %>
+<% end %>
+
+<% if_p('runtime_configurator.bosh.password') do |password| %>
+export DIRECTOR_PASSWORD=<%= password %>
+<% end %>
+
+<% if_p('runtime_configurator.bosh.ca_cert') do %>
+export DIRECTOR_CA_CERT=${CONFIG_DIR}/bosh_ca_cert
+<% end %>
+
+<% if_p('runtime_configurator.uaa.url') do |url| %>
+export UAA_URL=<%= url %>
+<% end %>
+
+<% if_p('runtime_configurator.uaa.client.id') do |client_id| %>
+export UAA_CLIENT_ID=<%= client_id %>
+<% end %>
+
+<% if_p('runtime_configurator.uaa.client.secret') do |client_secret| %>
+export UAA_CLIENT_SECRET=<%= client_secret %>
+<% end %>
+
+<% if_p('runtime_configurator.uaa.ca_cert') do %>
+export UAA_CA_CERT=${CONFIG_DIR}/uaa_ca_cert
+<% end %>
+
+export RUNTIME_CONFIG_NAME=<%= p('runtime_configurator.name') %>
+
+export RUNTIME_CONFIG_DEPLOY=<%= p('runtime_configurator.deploy') %>
+export RUNTIME_CONFIG_DEPLOY_DRY_RUN=<%= p('runtime_configurator.deploy_dry_run') %>
+
+# skip re-deploy of the errand deployment to prevent deadlock
+export RUNTIME_CONFIG_DEPLOY_SKIP=<%= spec.deployment %>
+
+export RUNTIME_CONFIG_ADD=${CONFIG_DIR}/add.yml
+export RUNTIME_CONFIG_REMOVE=${CONFIG_DIR}/remove.yml
+
+export BOSH_LOG_LEVEL=<%= p('runtime_configurator.bosh.log_level') %>
+
+${PKG_DIR}/bin/runtime-configurator
