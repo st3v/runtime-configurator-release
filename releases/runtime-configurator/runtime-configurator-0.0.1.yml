@@ -1,0 +1,26 @@
+---
+packages:
+- name: rtconfig
+  version: 37550cc70aa02d5536676dece80495dedec6cc1e
+  fingerprint: 37550cc70aa02d5536676dece80495dedec6cc1e
+  sha1: 708f3ad01e55bcf2326d8ef6986bb71845d102ea
+  dependencies:
+  - rtconfig-go
+- name: rtconfig-go
+  version: a9a103b24fa28fbcf8ddd7004d39160aa65bbac4
+  fingerprint: a9a103b24fa28fbcf8ddd7004d39160aa65bbac4
+  sha1: b854f71a65c08fc38beb020a5c1ad08134abfd9b
+  dependencies: []
+jobs:
+- name: configurator
+  version: 8338ab3d312562244cf49d4927dc8ec27bbb8e6c
+  fingerprint: 8338ab3d312562244cf49d4927dc8ec27bbb8e6c
+  sha1: d6344e87c376e252ccdfda1a0083c29034f373f5
+license:
+  version: e6c4ccc65c76e75e2338d1edabdcf264d37ee663
+  fingerprint: e6c4ccc65c76e75e2338d1edabdcf264d37ee663
+  sha1: b4f183295327501f8cfca00f191a7fea8950b536
+commit_hash: 768ebb09
+uncommitted_changes: true
+name: runtime-configurator
+version: 0.0.1
