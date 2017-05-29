@@ -5,4 +5,4 @@ dependencies:
 - rtconfig-go
 
 files:
-- github.com/st3v/rtconfig/**/*.go
+- github.com/st3v/runtime-configurator/**/*.go
